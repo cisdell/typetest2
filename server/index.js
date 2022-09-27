@@ -1,11 +1,13 @@
 require('dotenv').config();
 const express = require("express");
+
 const app = express();
 const path = require('path');
 const axios = require('axios');
+app.use(express.static(path.join(__dirname, "../public")));
 
-app.get("/getTests", (req, res) => {
-  var Params = {...req.query,...{apiKey:"2698cb711a1349a299581d40562d6b3e"}};
+app.get("/getdata", (req, res) => {
+  var Params = {...req.query,...{apiKey:process.env.API_KEY}};
   let config = {
     url:"https://newsapi.org/v2/everything",
     params: Params
