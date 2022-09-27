@@ -1,5 +1,5 @@
 const path = require("path");
-
+require('dotenv').config();
 module.exports = {
   mode: "development",
   entry: "./src/index.jsx",
@@ -31,6 +31,6 @@ module.exports = {
     },
     compress: true,
     // [port] what port on our local machine to run the dev server
-    port: 3000,
+    port: process.env.PORT,
   }
 }

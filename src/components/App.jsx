@@ -14,7 +14,9 @@ const App = () => {
     return axios
       .get("/getdata", { params })
       .then((result) => {
-        console.log(result);
+        setTypeTestWords(result.data.articles[0].title)
+        //var meat = result.data.articles
+        console.log(typeTestWords);
       })
       .catch((err) => console.log(err));
   };
