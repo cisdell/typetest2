@@ -15,7 +15,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "scripts": {
-    "start": "webpack --mode=development",
+    "start": "webpack --mode=development --watch" ,
     "build": "webpack --mode=production",
     "dev": "webpack serve --open",
     "server-dev": "nodemon server/index.js"

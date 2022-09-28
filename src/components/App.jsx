@@ -5,18 +5,26 @@ const axios = require("axios");
 
 const App = () => {
   const [testReady, SetTestReady] = useState(true);
-  const [typeTestWords, setTypeTestWords] = useState("");
+  const [typeTestWords, setTypeTestWords] = useState([]);
   const [testTopic, SetTestTopic] = useState("everything");
+  var getRandomInt = function (min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  };
 
   //get data function
-  var getTest = function () {
-    var params = {q: testTopic};
+  var setTest = function () {
+    var params = { q: testTopic };
     return axios
       .get("/getdata", { params })
       .then((result) => {
-        setTypeTestWords(result.data.articles[0].title)
-        //var meat = result.data.articles
-        console.log(typeTestWords);
+        // setTypeTestWords(result.data.)
+        var meat0 = result.data.articles[0].title;
+        var meat1 = result.data.articles[1].title;
+        var meat2 = result.data.articles[2].title;
+        setTypeTestWords([meat0, meat1, meat2]);
+        // console.log(result.data.articles);
       })
       .catch((err) => console.log(err));
   };
@@ -26,7 +34,7 @@ const App = () => {
       <h1>TYPING TEST</h1>
       <Form />
       {testReady ? <TestScript /> : null}
-      <button onClick={() => getTest()}>TEST</button>
+      <button onClick={() => setTest()}>TEST</button>
     </div>
   );
 };
