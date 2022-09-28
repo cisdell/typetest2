@@ -33,7 +33,7 @@ const App = () => {
     <div>
       <h1>TYPING TEST</h1>
       <Form />
-      {testReady ? <TestScript /> : null}
+      {testReady ? <TestScript testWords={typeTestWords.join('. ')}/> : null}
       <button onClick={() => setTest()}>TEST</button>
     </div>
   );
