@@ -7,7 +7,10 @@ const axios = require("axios");
 const App = function() {
   const [testReady, SetTestReady] = useState(true);
   const [statReady, SetStatReady] = useState(true);
-  const [userEmail, SetUserEmail] = useState('cisdell@gmail.com');
+  const [userInfo, SetUserInfo] = useState({});
+  const [userStat, SetUserStat] = useState({});
+
+
   const [typeTestWords, setTypeTestWords] = useState([]);
   const [testTopic, SetTestTopic] = useState("everything");
 
@@ -39,14 +42,19 @@ const App = function() {
       })
       .catch((err) => console.log(err));
   };
+  var postResult = function() {
+
+  }
+
+  //useEffect() to listen for
 
   return (
     <div>
       <h1>TYPING TEST</h1>
       {/* <Stats userEmail={userEmail}/> */}
-      {statReady ? <Stats userEmail={userEmail}/>: null}
-      <Form setTest={setTest}/>
-      {testReady ? <TestScript testWords={typeTestWords.join('. ')}/> : null}
+      {statReady ? <Stats userInfo={userInfo} userStat={userStat}/>: null}
+      <Form setTest={setTest} SetUserInfo={SetUserInfo}/>
+      {testReady ? <TestScript SetUserStat={SetUserStat} testWords={typeTestWords.join('. ')}/> : null}
     </div>
   );
 };

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Stats from "./stats.jsx";
-
+//lanuches
 var TestScript = function (props) {
-  var { testWords } = props;
-  var type = "chars";
+  var { testWords, SetUserStat } = props;
   const [tester, SetTester] = useState("");
   // const [tester, SetTester] = useState('')
   const [startTime, SetStartTime] = useState(null);
@@ -23,7 +22,10 @@ var TestScript = function (props) {
       t1[i] !== t2[i] ? diffArr.push(t2[i]) : null;
     }
     let accuracyRate = (1 - diffArr.length / t1.length) * 100;
-    console.log(accuracyRate);
+    let duration = 34; //will have to change later
+    let wpm = t2.split(" ").length * (60 / duration);
+    let userdata = { 'acc_rate': accuracyRate, 'duration': duration, 'wpm': wpm };
+    SetUserStat(userdata);
   };
 
   // const getDuration (e) {
@@ -57,7 +59,7 @@ var TestScript = function (props) {
       <button
         onClick={(e) => {
           grader(e, testWords, tester);
-          SetStatPage(true);
+          //should post the stats.
         }}
       >
         I'M DONE!

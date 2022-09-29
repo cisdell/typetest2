@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 const axios = require("axios");
 var Form = function (props) {
-  const { setTest } = props;
-  // console.log(setTest)
+  const { setTest, SetUserInfo } = props;
+  // console.log(SetUserInfo)
 
   const [state, setState] = useState({
     firstName: "",
@@ -18,6 +18,9 @@ var Form = function (props) {
       [e.target.name]: value,
     });
   }
+  useEffect(()=> {
+    SetUserInfo(state)
+  }, [state])
 
   return (
     <form>
@@ -61,7 +64,10 @@ var Form = function (props) {
         required
       ></input>
       <br/>
-      <button onClick={(e)=>setTest(e, state.testWord)}>LOAD MY TEST!</button>
+      <button onClick={
+        // SetUserInfo(state)
+        (e)=>setTest(e, state.testWord)
+        }>LOAD MY TEST!</button>
     </form>
   );
 };
