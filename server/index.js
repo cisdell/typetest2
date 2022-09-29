@@ -5,7 +5,10 @@ const app = express();
 const path = require('path');
 const axios = require('axios');
 const models = require("./models.js")
+var compression = require("compression");
+app.use(compression());
 app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/getdata", (req, res) => {
@@ -16,15 +19,15 @@ app.get("/getdata", (req, res) => {
   }
   return axios(config)
   .then((result) => {
-    console.log(result.data)
+    // console.log(result.data)
     res.send(result.data)})
     .catch(err => console.log(err))
 });
 
 app.get("/stats", (req, res) => {
-  models.fetchStat(req)
+  return models.fetchStat(req)
   .then((results)=> {
-    console.log(results)
+    // console.log(results)
     res.send(results.rows)
   })
   .catch(err => console.log(err))
@@ -32,7 +35,7 @@ app.get("/stats", (req, res) => {
 
 app.post("/stats", (req, res) => {
   console.log('received post')
-  models.postStat(req)
+  return models.postStat(req)
   .then((results)=> {
     console.log(results)
     res.sendStatus(201);
