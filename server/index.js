@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const path = require('path');
 const axios = require('axios');
+const models = require("./models.js")
+
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/getdata", (req, res) => {
@@ -20,12 +22,22 @@ app.get("/getdata", (req, res) => {
 });
 
 app.get("/stats", (req, res) => {
-  return null;
-})
+  models.fetchStat(req)
+  .then((results)=> {
+    console.log(results)
+    res.send(results.rows)
+  })
+  .catch(err => console.log(err))
+});
 
 app.post("/stats", (req, res) => {
-  return null;
-})
+  models.postStat(req)
+  .then((results)=> {
+    console.log(results)
+    res.sendStatus(201);
+  })
+  .catch(err => console.log(err))
+});
 
 
 

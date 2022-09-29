@@ -9,8 +9,6 @@ const App = function() {
   const [statReady, SetStatReady] = useState(true);
   const [userInfo, SetUserInfo] = useState({});
   const [userStat, SetUserStat] = useState({});
-
-
   const [typeTestWords, setTypeTestWords] = useState([]);
   const [testTopic, SetTestTopic] = useState("everything");
 

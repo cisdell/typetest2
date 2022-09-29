@@ -24,7 +24,7 @@ var Form = function (props) {
 
   return (
     <form>
-      <label for="firstName"> EnterFirstName:</label>
+      <label for="firstName"> Enter Your First Name:</label>
       <input
         type="text"
         id="firstName"
@@ -34,7 +34,7 @@ var Form = function (props) {
         required
       ></input>
       <br />
-      <label for="lastName"> Enter lastName:</label>
+      <label for="lastName"> Enter Your Last Name:</label>
       <input
         type="text"
         id="lastName"
@@ -65,7 +65,6 @@ var Form = function (props) {
       ></input>
       <br/>
       <button onClick={
-        // SetUserInfo(state)
         (e)=>setTest(e, state.testWord)
         }>LOAD MY TEST!</button>
     </form>

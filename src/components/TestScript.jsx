@@ -24,15 +24,10 @@ var TestScript = function (props) {
     let accuracyRate = (1 - diffArr.length / t1.length) * 100;
     let duration = 34; //will have to change later
     let wpm = t2.split(" ").length * (60 / duration);
-    let userdata = { 'acc_rate': accuracyRate, 'duration': duration, 'wpm': wpm };
+    let userdata = { acc_rate: accuracyRate, duration: duration, wpm: wpm };
     SetUserStat(userdata);
   };
 
-  // const getDuration (e) {
-
-  // }
-
-  // console.log(props)
   return (
     <div>
       {statPage ? <Stats duration={endTime} SetStatPage={SetStatPage} /> : null}
@@ -59,7 +54,6 @@ var TestScript = function (props) {
       <button
         onClick={(e) => {
           grader(e, testWords, tester);
-          //should post the stats.
         }}
       >
         I'M DONE!
