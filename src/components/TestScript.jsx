@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import Stats from "./stats.jsx";
 //lanuches
 var TestScript = function (props) {
-  var { testWords, SetUserStat, SetStatReady} = props;
+  var { testWords, SetUserStat, SetStatReady, openModal} = props;
   const [tester, SetTester] = useState("");
   // const [tester, SetTester] = useState('')
   const [startTime, SetStartTime] = useState(null);
   const [endTime, SetEndTime] = useState(null);
   const [statPage, SetStatPage] = useState(false);
-  // const [wrongLetters, SetWrongLetters] = useState([]);
-  // const []
+
   const onChange = function (e) {
     if (e.target.name === "attempts") {
       SetTester(e.target.value);
@@ -55,6 +54,7 @@ var TestScript = function (props) {
         onClick={(e) => {
           grader(e, testWords, tester);
           SetStatReady(true);
+          openModal(true);
         }}
       >
         I'M DONE!

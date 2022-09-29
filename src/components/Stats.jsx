@@ -3,19 +3,9 @@ import StatsItems from "./StatsItems.jsx";
 const axios = require("axios");
 
 var Stats = function (props) {
-  const { userInfo, userStat } = props;
+  const { userInfo, userStat, closeModal} = props;
   var userData = { ...userInfo, ...userStat };
-  const [testRecord, SetTestRecord] = useState([
-    {
-      firstName: "Papa",
-      lastName: "Cho",
-      email: "cisdell@gmail.com",
-      testWord: "Russia",
-      acc_rate: 53.888888888888886,
-      duration: 30,
-      wpm: 1.47058,
-    },
-  ]);
+  const [testRecord, SetTestRecord] = useState([]);
 
   useEffect(() => {
     console.log("sending Post req from client", userData); //check
@@ -34,6 +24,7 @@ var Stats = function (props) {
   return (
     <div>
       <h2>TEST RECORDS</h2>
+      <button onClick={()=>closeModal(false)}>RETURN</button>
       <div>
         (
         {testRecord.map((item) => (
@@ -54,10 +45,5 @@ var Stats = function (props) {
     </div>
   );
 };
-// first_name={item.first_name}
-// last_name={item.last_name}
-// id={item.id}
-// test_word={item.test_word}
-// wpm={item.wpm}
 
 export default Stats;

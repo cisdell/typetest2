@@ -9,6 +9,7 @@ const App = function() {
   const [statReady, SetStatReady] = useState(false);
   const [userInfo, SetUserInfo] = useState({});
   const [userStat, SetUserStat] = useState({});
+  const [openModal, setOpenModal] = useState(false);
   const [typeTestWords, setTypeTestWords] = useState([]);
   const [testTopic, SetTestTopic] = useState("everything");
 
@@ -46,9 +47,11 @@ const App = function() {
   return (
     <div>
       <h1>TYPING TEST</h1>
-      {statReady ? <Stats userInfo={userInfo} userStat={userStat}/>: null}
+      {openModal ? <Stats userInfo={userInfo} userStat={userStat} closeModal={setOpenModal}/>: null}
+
       <Form setTest={setTest} SetUserInfo={SetUserInfo}/>
-      {testReady ? <TestScript SetStatReady={SetStatReady} SetUserStat={SetUserStat} testWords={typeTestWords.join('. ')}/> : null}
+
+      <TestScript SetStatReady={SetStatReady} SetUserStat={SetUserStat} openModal={setOpenModal} testWords={typeTestWords.join('. ')}/>
     </div>
   );
 };
