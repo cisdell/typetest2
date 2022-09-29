@@ -19,6 +19,13 @@ app.get("/getdata", (req, res) => {
     .catch(err => console.log(err))
 });
 
+app.get("/stats", (req, res) => {
+  return null;
+})
+
+app.post("/stats", (req, res) => {
+  return null;
+})
 
 
 

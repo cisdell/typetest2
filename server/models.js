@@ -1,7 +1,7 @@
 const pool = require("./database.js");
 
 const fetchStat = function(req) {
-
+  var user = req.query.user
   var queryStr = `
   SELECT id, name, slogan, description, category, default_price
   FROM products
@@ -10,6 +10,7 @@ const fetchStat = function(req) {
 }
 
 const postStat = function(req) {
+  req.query
   let lim = 5;
   req.query.count ? (lim = req.query.count) : null;
   var queryStr = `
