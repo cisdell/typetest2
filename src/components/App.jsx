@@ -40,9 +40,6 @@ const App = function() {
       })
       .catch((err) => console.log(err));
   };
-  var postResult = function() {
-
-  }
 
   return (
     <div>
