@@ -6,7 +6,7 @@ const axios = require("axios");
 
 const App = function() {
   const [testReady, SetTestReady] = useState(true);
-  const [statReady, SetStatReady] = useState(true);
+  const [statReady, SetStatReady] = useState(false);
   const [userInfo, SetUserInfo] = useState({});
   const [userStat, SetUserStat] = useState({});
   const [typeTestWords, setTypeTestWords] = useState([]);
@@ -26,7 +26,6 @@ const App = function() {
   //get data function
   var setTest = function (e, topic='everything') {
     e.preventDefault();
-    // var topic = 'everything';
     var params = { q: topic };
     return axios
       .get("/getdata", { params })
@@ -44,15 +43,12 @@ const App = function() {
 
   }
 
-  //useEffect() to listen for
-
   return (
     <div>
       <h1>TYPING TEST</h1>
-      {/* <Stats userEmail={userEmail}/> */}
       {statReady ? <Stats userInfo={userInfo} userStat={userStat}/>: null}
       <Form setTest={setTest} SetUserInfo={SetUserInfo}/>
-      {testReady ? <TestScript SetUserStat={SetUserStat} testWords={typeTestWords.join('. ')}/> : null}
+      {testReady ? <TestScript SetStatReady={SetStatReady} SetUserStat={SetUserStat} testWords={typeTestWords.join('. ')}/> : null}
     </div>
   );
 };

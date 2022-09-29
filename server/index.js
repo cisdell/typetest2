@@ -1,11 +1,11 @@
 require('dotenv').config();
 const express = require("express");
-
+var bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const axios = require('axios');
 const models = require("./models.js")
-
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/getdata", (req, res) => {
@@ -31,6 +31,7 @@ app.get("/stats", (req, res) => {
 });
 
 app.post("/stats", (req, res) => {
+  console.log('received post')
   models.postStat(req)
   .then((results)=> {
     console.log(results)

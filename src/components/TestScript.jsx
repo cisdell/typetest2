@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Stats from "./stats.jsx";
 //lanuches
 var TestScript = function (props) {
-  var { testWords, SetUserStat } = props;
+  var { testWords, SetUserStat, SetStatReady} = props;
   const [tester, SetTester] = useState("");
   // const [tester, SetTester] = useState('')
   const [startTime, SetStartTime] = useState(null);
@@ -54,6 +54,7 @@ var TestScript = function (props) {
       <button
         onClick={(e) => {
           grader(e, testWords, tester);
+          SetStatReady(true);
         }}
       >
         I'M DONE!
