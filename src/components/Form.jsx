@@ -19,6 +19,7 @@ var Form = function (props) {
     });
   }
   useEffect(()=> {
+    console.log('useeffect from form.jsx')
     SetUserInfo(state)
   }, [state])
 

@@ -44,7 +44,7 @@ const App = function() {
   return (
     <div>
       <h1>TYPING TEST</h1>
-      {openModal ? <Stats userInfo={userInfo} userStat={userStat} closeModal={setOpenModal}/>: null}
+      {openModal && (<Stats userInfo={userInfo} userStat={userStat} closeModal={setOpenModal}/>)}
 
       <Form setTest={setTest} SetUserInfo={SetUserInfo}/>
 

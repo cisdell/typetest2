@@ -9,7 +9,7 @@ var Stats = function (props) {
 
   useEffect(() => {
     console.log("sending Post req from client", userData); //check
-    return axios
+    axios
       .post("/stats", { userData })
       .then((response) => {
         // console.log(results1);
