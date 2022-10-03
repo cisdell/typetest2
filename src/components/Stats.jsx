@@ -44,7 +44,7 @@ var Stats = function (props) {
             test_word={item.test_word}
             wpm={item.wpm}
           />
-        ))}s
+        ))}
       </div>
     </div>
   );

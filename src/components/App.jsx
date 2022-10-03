@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {ModalItem,
+import {Main, Title2, ModalItem,
   Title,
   BodyContainer,
   BodyContainer2,
@@ -46,8 +46,8 @@ const App = function () {
   };
   return (
     <div>
-      <Title>TYPING TEST</Title>
-      <div>Improve your typing speed and accuracy!</div>
+      <Title>TYPE MASTER</Title>
+      <Title2>Improve your typing speed and accuracy!</Title2>
       {openModal && (
         <ModalItem>
           <Stats

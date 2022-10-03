@@ -38,6 +38,9 @@ var TestScript = function (props) {
   return (
     <div>
       {statPage ? <Stats duration={endTime} SetStatPage={SetStatPage} /> : null}
+      <div>
+        {startTime? <span>{Math.round((new Date()-startTime)/1000)}</span>: null}
+      </div>
       <textarea
         maxLength="60"
         rows="7"
@@ -53,7 +56,7 @@ var TestScript = function (props) {
         rows="7"
         cols="80"
         name="attempts"
-        placeholder="When you type the clock starts! Click 'I'M DONE' when you finish!"
+        placeholder="Clock starts when you start typing. Clock stops when you click `I'm done`!"
         onChange={onChange}
         // onkeypress={startTimeFunc}
         // value={}

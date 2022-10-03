@@ -5,7 +5,7 @@ const root = createRoot(document.getElementById("root"));
 import App from "./components/App.jsx";
 
 export const Main = styled.body`
-  background-color: lightblue;
+  background-color: #F5F5DC;
 `;
 
 root.render(
@@ -21,7 +21,7 @@ root.render(
 
 
 
-    <><br/><br/><br/><br/><br/><br/>.</>
+    <><br/><br/><br/><br/><br/><br/>&nbsp;</>
   </Main>
 
 
