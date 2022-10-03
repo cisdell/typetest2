@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
+import {ModalItem,
+  Title,
+  BodyContainer,
+  BodyContainer2,
+} from "./styles/Container.styled";
 import Form from "./Form.jsx";
 import TestScript from "./TestScript.jsx";
 import Stats from "./Stats.jsx";
 const axios = require("axios");
 
-const App = function() {
+const App = function () {
   const [testReady, SetTestReady] = useState(true);
   const [statReady, SetStatReady] = useState(false);
   const [userInfo, SetUserInfo] = useState({});
@@ -13,19 +18,18 @@ const App = function() {
   const [typeTestWords, setTypeTestWords] = useState([]);
   const [testTopic, SetTestTopic] = useState("everything");
 
-
   var getRandomInt = function (min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
   };
-  var setUserEmail = function(e, email) {
+  var setUserEmail = function (e, email) {
     e.preventDefault();
     SetUserEmail(email);
-  }
+  };
 
   //get data function
-  var setTest = function (e, topic='everything') {
+  var setTest = function (e, topic = "everything") {
     e.preventDefault();
     var params = { q: topic };
     return axios
@@ -39,15 +43,31 @@ const App = function() {
         // console.log(result.data.articles);
       })
       .catch((err) => console.log(err));
-  }
+  };
   return (
     <div>
-      <h1>TYPING TEST</h1>
-      {openModal && (<Stats userInfo={userInfo} userStat={userStat} closeModal={setOpenModal}/>)}
-
-      <Form setTest={setTest} SetUserInfo={SetUserInfo}/>
-
-      <TestScript SetStatReady={SetStatReady} SetUserStat={SetUserStat} openModal={setOpenModal} testWords={typeTestWords.join('. ')}/>
+      <Title>TYPING TEST</Title>
+      <div>Improve your typing speed and accuracy!</div>
+      {openModal && (
+        <ModalItem>
+          <Stats
+            userInfo={userInfo}
+            userStat={userStat}
+            closeModal={setOpenModal}
+          />
+        </ModalItem>
+      )}
+      <BodyContainer>
+        <Form setTest={setTest} SetUserInfo={SetUserInfo} />
+      </BodyContainer>
+      <BodyContainer2>
+        <TestScript
+          SetStatReady={SetStatReady}
+          SetUserStat={SetUserStat}
+          openModal={setOpenModal}
+          testWords={typeTestWords.join(". ")}
+        />
+      </BodyContainer2>
     </div>
   );
 };

@@ -1,6 +1,35 @@
-import React from 'react';
+import React from "react";
+import styled from "styled-components";
 import { createRoot } from "react-dom/client";
 const root = createRoot(document.getElementById("root"));
-import App from './components/App.jsx';
+import App from "./components/App.jsx";
 
-root.render(<App />);
+export const Main = styled.body`
+  background-color: lightblue;
+`;
+
+root.render(
+  <Main>
+    <App />
+
+
+
+
+
+
+
+
+
+
+    <><br/><br/><br/><br/><br/><br/>.</>
+  </Main>
+
+
+
+
+
+
+
+
+
+);

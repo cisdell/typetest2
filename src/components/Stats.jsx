@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import StatsItems from "./StatsItems.jsx";
+import {ModalItem,
+  Title,
+  BodyContainer,
+  BodyContainer2,
+} from "./styles/Container.styled";
 const axios = require("axios");
 
 var Stats = function (props) {
@@ -23,10 +28,10 @@ var Stats = function (props) {
   }, []);
   return (
     <div>
-      <h2>TEST RECORDS</h2>
+      <h2>RESULTS!</h2>
+
       <button onClick={()=>closeModal(false)}>RETURN</button>
       <div>
-        (
         {testRecord.map((item) => (
           <StatsItems
             acc_rate={item.acc_rate}
@@ -39,8 +44,7 @@ var Stats = function (props) {
             test_word={item.test_word}
             wpm={item.wpm}
           />
-        ))}
-        )
+        ))}s
       </div>
     </div>
   );
