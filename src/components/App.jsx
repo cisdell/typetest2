@@ -39,8 +39,7 @@ const App = function() {
         // console.log(result.data.articles);
       })
       .catch((err) => console.log(err));
-  };
-
+  }
   return (
     <div>
       <h1>TYPING TEST</h1>
